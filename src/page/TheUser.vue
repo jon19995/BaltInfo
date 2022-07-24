@@ -76,12 +76,15 @@
 
 <script>
     import { UserCard, TheLoader } from '@/components/index'
+    import { MessageMixin } from '@/mixins/index'
 
     export default {
         components: {
             UserCard,
             TheLoader,
         },
+
+        mixins: [MessageMixin],
 
         data() {
             return {
@@ -117,7 +120,7 @@
                         }
                     })
                     .catch((error) => {
-                        this.$toast.error(error.message)
+                        this.showError(error.message)
                     })
                     .finally(() => {
                         this.loading = false

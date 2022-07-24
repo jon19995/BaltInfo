@@ -3,7 +3,7 @@
         <the-loader v-if="loading" />
         <div class="row justify-content-center pt-3">
             <div class="col-6 position-relative">
-                <form @submit.prevent>
+                <form @submit.prevent="validateBeforeAddUser()">
                     <div class="mb-3">
                         <div class="input-group mb-3">
                             <input
@@ -18,7 +18,7 @@
                                 class="btn btn-outline-secondary"
                                 type="button"
                                 id="button-addon2"
-                                @click.prevent="handleSetUser(userIds)"
+                                @click.prevent="validateBeforeAddUser()"
                             >
                                 Add
                             </button>
@@ -43,7 +43,7 @@
                         :photo="user.photo_50"
                         :bdate="user.bdate"
                         :friends="user.counters?.friends"
-                        :sex="user.sex === 2 ? 'male' : 'Woman'"
+                        :sex="user.sex === 2 ? SEX.MALE : SEX.WOMAN"
                         :backgroundColor="
                             backgroundColorForUserCard(user.counters?.friends)
                         "
@@ -68,7 +68,7 @@
 <script>
     import { mapGetters, mapMutations, mapActions } from 'vuex'
     import { UserCard, TheLoader } from '@/components/index'
-    import { StorageDataMixin } from '@/mixins/index'
+    import { StorageDataMixin, MessageMixin } from '@/mixins/index'
 
     export default {
         components: {
@@ -76,7 +76,7 @@
             TheLoader,
         },
 
-        mixins: [StorageDataMixin],
+        mixins: [StorageDataMixin, MessageMixin],
 
         data() {
             return {
@@ -85,6 +85,10 @@
                 userIds: '',
                 foundUsers: [],
                 TOKEN: this.$store.state.token,
+                SEX: {
+                    WOMAN: 'Woman',
+                    MALE: 'Male',
+                },
             }
         },
 
@@ -110,19 +114,23 @@
                 return `hsla(204, 86%, ${brightness}%, 1)`
             },
 
-            handleSetUser(userIds) {
-                if (!userIds) {
-                    return this.$toast.error('Empty request')
+            validateBeforeAddUser() {
+                if (this.userIds) {
+                    this.handleSetUser(this.userIds)
+                } else {
+                    this.showError('Empty request')
                 }
+            },
 
+            handleSetUser(userIds) {
                 this.loading = true
 
                 this.setUser(userIds)
                     .then(() => {
-                        this.$toast.success('successfully')
+                        this.showSuccess('successfully')
                     })
                     .catch((error) => {
-                        this.$toast.error(error.message)
+                        this.showError(error.message)
                     })
                     .finally(() => {
                         this.loading = false
@@ -139,13 +147,6 @@
                     showUsers: this.showUsers,
                 })
             },
-
-            checkUserInfoundUsers(userId) {
-                return !this.getUsersBySort
-                    .map((user) => user.id)
-                    .includes(userId)
-            },
         },
     }
 </script>
-<style lang="sass" scoped></style>

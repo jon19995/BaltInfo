@@ -1,3 +1,4 @@
 import StorageDataMixin from './StorageDataMixin.vue'
+import MessageMixin from './MessageMixin.vue'
 
-export { StorageDataMixin }
+export { StorageDataMixin, MessageMixin }
