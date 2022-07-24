@@ -6,7 +6,7 @@
         "serve": "vue-cli-service serve --open --host localhost",
         "dev": "npm run serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint --fix"
     },
     "dependencies": {
         "axios-jsonp-pro": "^1.1.8",

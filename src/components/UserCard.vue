@@ -1,5 +1,5 @@
 <template>
-    <component class="hover" :is="tag">
+    <component :is="tag" class="hover">
         <span
             class="w-100 h-100 position-absolute hover__bck"
             :style="{ backgroundColor: backgroundColor }"
@@ -9,9 +9,9 @@
             <span class="align-top m-4">
                 {{ name }}
             </span>
-            <div v-if="!!this.bdate">Birthday: {{ this.bdate }}</div>
-            <div v-if="!!this.friends">Friends: {{ this.friends }}</div>
-            <div v-if="!!this.sex">Sex: {{ this.sex }}</div>
+            <div v-if="!!bdate">Birthday: {{ bdate }}</div>
+            <div v-if="!!friends">Friends: {{ friends }}</div>
+            <div v-if="!!sex">Sex: {{ sex }}</div>
 
             <div class="rightElement">
                 <slot name="addOnRight" />
@@ -22,7 +22,7 @@
 
 <script>
     export default {
-        name: 'user-card',
+        name: 'UserCard',
 
         props: {
             tag: {
@@ -40,9 +40,11 @@
             },
             bdate: {
                 type: String,
+                default: '',
             },
             friends: {
                 type: Number,
+                default: 0,
             },
             backgroundColor: {
                 type: String,
@@ -50,6 +52,7 @@
             },
             sex: {
                 type: String,
+                default: 'Unknown',
             },
         },
     }

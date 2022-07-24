@@ -15,9 +15,9 @@
                                 aria-describedby="button-addon2"
                             />
                             <button
+                                id="button-addon2"
                                 class="btn btn-outline-secondary"
                                 type="button"
-                                id="button-addon2"
                                 @click.prevent="validateBeforeAddUser()"
                             >
                                 Add
@@ -34,9 +34,9 @@
                 </button>
                 <ul v-show="showUsers" class="ps-0">
                     <user-card
-                        tag="li"
                         v-for="user in getUsersBySort"
                         :key="user.id"
+                        tag="li"
                         class="list-group-item w-100"
                         style="cursor: pointer"
                         :name="`${user.first_name} ${user.last_name}`"
@@ -44,10 +44,10 @@
                         :bdate="user.bdate"
                         :friends="user.counters?.friends"
                         :sex="user.sex === 2 ? SEX.MALE : SEX.WOMAN"
-                        :backgroundColor="
+                        :background-color="
                             backgroundColorForUserCard(user.counters?.friends)
                         "
-                        @click.native="handleOpenUser(user.id)"
+                        @click="handleOpenUser(user.id)"
                     >
                         <template #addOnRight>
                             <button

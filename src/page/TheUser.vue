@@ -13,12 +13,12 @@
                         aria-label="Basic radio toggle button group"
                     >
                         <input
+                            id="btnradio1"
+                            v-model="showPostOrFriends"
                             type="radio"
                             :value="true"
-                            v-model="showPostOrFriends"
                             class="btn-check"
                             name="btnradio"
-                            id="btnradio1"
                             autocomplete="off"
                         />
                         <label
@@ -28,12 +28,12 @@
                         >
 
                         <input
+                            id="btnradio2"
+                            v-model="showPostOrFriends"
                             type="radio"
                             :value="false"
-                            v-model="showPostOrFriends"
                             class="btn-check"
                             name="btnradio"
-                            id="btnradio2"
                             autocomplete="off"
                         />
                         <label
@@ -46,9 +46,9 @@
                 <div class="w-100" />
                 <ul v-show="showPostOrFriends" class="col-6">
                     <div
-                        class="card border-dark mb-3 p-0"
                         v-for="post in posts"
                         :key="post.id"
+                        class="card border-dark mb-3 p-0"
                     >
                         <div class="card-header">id: {{ post.id }}</div>
                         <div class="card-body text-dark">
@@ -59,9 +59,9 @@
                 </ul>
                 <ul v-show="!showPostOrFriends" class="col-6">
                     <user-card
-                        tag="li"
                         v-for="friend in friends"
                         :key="friend.id"
+                        tag="li"
                         class="list-group-item w-100"
                         style="cursor: pointer"
                         :name="`${friend.first_name} ${friend.last_name}`"

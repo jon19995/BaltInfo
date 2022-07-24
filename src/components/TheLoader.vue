@@ -1,16 +1,16 @@
 <template>
-    <div
+    <component
         :is="tag"
         class="d-flex justify-content-center align-items-center loader"
     >
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
+    </component>
 </template>
 <script>
     export default {
-        name: 'user-card',
+        name: 'UserCard',
 
         props: {
             tag: {
