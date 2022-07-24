@@ -10,7 +10,6 @@
             },
 
             showMessage(type, message, props) {
-                console.log(...props)
                 this.$toast.open({
                     message: message,
                     type: type,

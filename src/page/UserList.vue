@@ -7,7 +7,7 @@
                     <div class="mb-3">
                         <div class="input-group mb-3">
                             <input
-                                v-model="userIds"
+                                v-model="form.userIds"
                                 type="text"
                                 class="form-control"
                                 placeholder="username"
@@ -82,7 +82,9 @@
             return {
                 loading: false,
                 showUsers: false,
-                userIds: '',
+                form: {
+                    userIds: '',
+                },
                 foundUsers: [],
                 TOKEN: this.$store.state.token,
                 SEX: {
@@ -115,8 +117,8 @@
             },
 
             validateBeforeAddUser() {
-                if (this.userIds) {
-                    this.handleSetUser(this.userIds)
+                if (this.form.userIds) {
+                    this.handleSetUser(this.form.userIds)
                 } else {
                     this.showError('Empty request')
                 }
@@ -143,6 +145,7 @@
 
             handleShowUserList() {
                 this.showUsers = !this.showUsers
+
                 this.setStorageData(this.$route.name, {
                     showUsers: this.showUsers,
                 })
