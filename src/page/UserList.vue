@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
     <div class="container">
         <the-loader v-if="loading" />
@@ -47,7 +48,7 @@
                         :background-color="
                             backgroundColorForUserCard(user.counters?.friends)
                         "
-                        @click="handleOpenUser(user.id)"
+                        @click.native="handleOpenUser(user.id)"
                     >
                         <template #addOnRight>
                             <button
