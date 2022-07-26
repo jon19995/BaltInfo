@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/no-deprecated-v-on-native-modifier -->
 <template>
     <div class="container">
         <the-loader v-if="loading" />
