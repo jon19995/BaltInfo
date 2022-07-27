@@ -1,0 +1,11 @@
+image: ubuntu:latest
+stages: -deploy
+
+pages:
+    stage: deploy
+    script:
+        - mkdir public
+        - mv index.html ./publick
+    artifacts:
+        paths:
+            - public
