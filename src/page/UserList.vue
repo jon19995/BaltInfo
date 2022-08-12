@@ -4,7 +4,7 @@
         <div class="row justify-content-center pt-3">
             <div class="col-6 position-relative">
                 <form>
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <div class="input-group mb-3">
                             <input
                                 v-model="form.userIds"
