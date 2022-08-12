@@ -45,7 +45,7 @@
                 </div>
                 <div class="w-100" />
                 <ul v-show="showPostOrFriends" class="col-6">
-                    <div
+                    <li
                         v-for="post in posts"
                         :key="post.id"
                         class="card border-dark mb-3 p-0"
@@ -55,7 +55,7 @@
                             <h5 class="card-title">description:</h5>
                             <p class="card-text">{{ getPostText(post) }}</p>
                         </div>
-                    </div>
+                    </li>
                 </ul>
                 <ul v-show="!showPostOrFriends" class="col-6">
                     <user-card

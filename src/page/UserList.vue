@@ -3,7 +3,7 @@
         <the-loader v-if="loading" />
         <div class="row justify-content-center pt-3">
             <div class="col-6 position-relative">
-                <form @submit.prevent="validateBeforeAddUser()">
+                <form>
                     <div class="mb-3">
                         <div class="input-group mb-3">
                             <input
@@ -17,7 +17,7 @@
                             <button
                                 id="button-addon2"
                                 class="btn btn-outline-secondary"
-                                type="button"
+                                type="submit"
                                 @click.prevent="validateBeforeAddUser()"
                             >
                                 Add
